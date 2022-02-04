@@ -73,7 +73,7 @@ class ExamenServiceImplTest {
     void testPreguntasExamen() {
         when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
         when(preguntaRepository.findPreguntasPorExamenId(anyLong())).thenReturn(Datos.PREGUNTAS);
-        Examen examen = examenService.findExamenPorNombreConPreguntas("Español");
+        Examen examen = examenService.findExamenPorNombreConPreguntas("Lenguaje");
         assertNotNull(examen);
         assertFalse(examen.getPreguntas().isEmpty());
         assertEquals(5, examen.getPreguntas().size());
@@ -84,7 +84,7 @@ class ExamenServiceImplTest {
     void testPreguntasExamenVerify() {
         when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
         when(preguntaRepository.findPreguntasPorExamenId(anyLong())).thenReturn(Datos.PREGUNTAS);
-        Examen examen = examenService.findExamenPorNombreConPreguntas("Español");
+        Examen examen = examenService.findExamenPorNombreConPreguntas("Lenguaje");
         assertNotNull(examen);
         assertFalse(examen.getPreguntas().isEmpty());
         assertEquals(5, examen.getPreguntas().size());
@@ -290,7 +290,7 @@ class ExamenServiceImplTest {
         when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
 
         examenService.findExamenPorNombreConPreguntas("Matematicas");
-        examenService.findExamenPorNombreConPreguntas("Español");
+        examenService.findExamenPorNombreConPreguntas("Lenguaje");
 
         InOrder inOrder = inOrder(examenRepository, preguntaRepository);
         inOrder.verify(examenRepository).findAll();
